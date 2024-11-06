@@ -1,6 +1,12 @@
 fileVersion: 1
 id: "2"
 mappingDefinitions:
+  AURORA_PUBLIC:
+    database: ""
+    schema: ""
+  S3_LINEN:
+    database: ""
+    schema: ""
   SAMPLE:
     database: SNOWFLAKE_SAMPLE_DATA
     schema: TPCH_SF1

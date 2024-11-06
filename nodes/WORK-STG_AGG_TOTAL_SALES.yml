@@ -1,0 +1,76 @@
+fileVersion: 1
+id: b516343d-cf71-407f-a9c3-32acfd347a65
+name: STG_AGG_TOTAL_SALES
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Lineitem data as defined by TPC-H
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 68971afa-9137-4f73-8501-2e43f91adcea
+          stepCounter: b516343d-cf71-407f-a9c3-32acfd347a65
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: L_ORDERKEY
+        nullable: false
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5c13fbe6-c422-43d2-8751-e6fb9ad03322
+                stepCounter: d55f3b8d-5fe5-4f1d-9f41-7fb5a7f289b7
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 150ff406-0a88-409f-9cd8-1527c47751ba
+          stepCounter: b516343d-cf71-407f-a9c3-32acfd347a65
+        config: {}
+        dataType: NUMBER(12,2)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: TOTAL_SALES
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: "0"
+                stepCounter: "0"
+            transform: SUM("STG_LINEITEM"."L_EXTENDEDPRICE")
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_LINEITEM: d55f3b8d-5fe5-4f1d-9f41-7fb5a7f289b7
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: STG_LINEITEM
+        join:
+          joinCondition: |-
+            FROM {{ ref('WORK', 'STG_LINEITEM') }} "STG_LINEITEM"
+            GROUP BY "STG_LINEITEM"."L_ORDERKEY"
+        name: STG_AGG_TOTAL_SALES
+        noLinkRefs: []
+  name: STG_AGG_TOTAL_SALES
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

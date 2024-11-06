@@ -1,0 +1,58 @@
+fileVersion: 1
+id: 2337cbc3-5683-4fc2-be23-f9b5b21a3574
+name: DELIVERY
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: WORK
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8f9920ef-3145-460d-ad20-c62a74b02c43
+          stepCounter: 2337cbc3-5683-4fc2-be23-f9b5b21a3574
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: DELNUM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 19dc0057-0b56-47e2-8453-4500c31d29ed
+          stepCounter: 2337cbc3-5683-4fc2-be23-f9b5b21a3574
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: NEXT_DELIVERY_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('WORK', 'DELIVERY') }}
+  name: DELIVERY
+  schema: ""
+  sqlType: Source
+  table: DELIVERY
+  type: sourceInput
+  version: 1
+type: Node

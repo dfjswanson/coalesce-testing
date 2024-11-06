@@ -1,0 +1,91 @@
+fileVersion: 1
+id: d45c4e4c-1bf0-49c4-874a-c2f194d2d970
+name: STG_DELIVERY_DETAIL_GROUPED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1cebe545-002f-4784-aa2b-69120d796fb4
+          stepCounter: d45c4e4c-1bf0-49c4-874a-c2f194d2d970
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: DELNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9bc0776-fea7-41aa-a6f3-06faa5d86676
+                stepCounter: 1552cc64-0008-466d-876c-f83ce021da7a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d3df9c93-126b-417f-9a71-ca35274225f1
+          stepCounter: d45c4e4c-1bf0-49c4-874a-c2f194d2d970
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: CUSTNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bd105fb9-7ad1-4047-88b2-a23076ad6ec3
+                stepCounter: 1552cc64-0008-466d-876c-f83ce021da7a
+            transform: ""
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c402e9b8-8411-4d1f-aec6-b63533bda5ca
+          stepCounter: d45c4e4c-1bf0-49c4-874a-c2f194d2d970
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CUSTNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0233713-5f29-4933-8355-e03b9d487e1d
+                stepCounter: ae3f5229-66a8-4a38-997b-e2f8c023d110
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DELIVERY_DETAIL: 1552cc64-0008-466d-876c-f83ce021da7a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: AURORA_PUBLIC
+            nodeName: DELIVERY_DETAIL
+        join:
+          joinCondition: |-
+            FROM {{ ref('AURORA_PUBLIC', 'DELIVERY_DETAIL') }} "DELIVERY_DETAIL"
+            LEFT JOIN "PC_COALESCE_DB"."AURORA_POSTGRES_PUBLIC"."CUSTOMER" ON "CUSTOMER"."CUSTNUM" = "DELIVERY_DETAIL"."CUSTNUM"
+            GROUP BY "DELIVERY_DETAIL"."DELNUM","DELIVERY_DETAIL"."CUSTNUM","CUSTOMER"."CUSTOMER_NAME"
+        name: STG_DELIVERY_DETAIL_GROUPED
+        noLinkRefs: []
+  name: STG_DELIVERY_DETAIL_GROUPED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

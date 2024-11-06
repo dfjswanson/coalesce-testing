@@ -1,0 +1,134 @@
+fileVersion: 1
+id: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+name: ITEM
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: AURORA_PUBLIC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2fa0d5ce-a3ec-4238-bc6e-566c251839e1
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ITEM_NUMBER_ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4c4c9c6-d456-417d-992c-c75f34436093
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: ITEM_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7642ed3c-bb7f-4f2e-9816-5e21da91c4c3
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3ea6414-c71b-4a07-a3e5-c62314372a4d
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8bc4627-6910-4411-a862-bb4196685b84
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f7160a35-89f2-42d2-9eee-288381251c82
+          stepCounter: 9a3a2322-5eee-4f20-84f5-46a5acf19c65
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('AURORA_PUBLIC', 'ITEM') }}
+  name: ITEM
+  schema: ""
+  sqlType: Source
+  table: ITEM
+  type: sourceInput
+  version: 1
+type: Node

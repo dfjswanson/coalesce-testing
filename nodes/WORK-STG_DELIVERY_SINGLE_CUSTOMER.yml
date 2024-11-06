@@ -1,0 +1,66 @@
+fileVersion: 1
+id: 43a03542-f3f8-4a0e-a7dd-11331ea73478
+name: STG_DELIVERY_SINGLE_CUSTOMER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3415cb1a-946b-4e54-9ebd-c89f2689e1b9
+          stepCounter: 43a03542-f3f8-4a0e-a7dd-11331ea73478
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: DELNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9bc0776-fea7-41aa-a6f3-06faa5d86676
+                stepCounter: 1552cc64-0008-466d-876c-f83ce021da7a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47f7a8fa-4444-4529-a0fc-3d7867c567ab
+          stepCounter: 43a03542-f3f8-4a0e-a7dd-11331ea73478
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: CUSTNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: FIRST_VALUE("DELIVERY_DETAIL"."CUSTNUM") OVER (PARTITION BY "DELIVERY_DETAIL"."CUSTNUM" ORDER BY "DELIVERY_DETAIL"."CUSTNUM" NULLS LAST)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DELIVERY_DETAIL: 1552cc64-0008-466d-876c-f83ce021da7a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: AURORA_PUBLIC
+            nodeName: DELIVERY_DETAIL
+        join:
+          joinCondition: FROM {{ ref('AURORA_PUBLIC', 'DELIVERY_DETAIL') }} "DELIVERY_DETAIL"
+        name: STG_DELIVERY_SINGLE_CUSTOMER
+        noLinkRefs: []
+  name: STG_DELIVERY_SINGLE_CUSTOMER
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

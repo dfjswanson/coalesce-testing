@@ -1,0 +1,96 @@
+fileVersion: 1
+id: 2ca4ff96-9373-4969-8bcd-e4cc19e1c124
+name: MAN
+operation:
+  database: ""
+  dataset: ""
+  deployEnabled: true
+  description: ""
+  locationName: AURORA_PUBLIC
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: dda8a244-3131-4e5a-b13d-94de5abd0754
+          stepCounter: 2ca4ff96-9373-4969-8bcd-e4cc19e1c124
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: MANID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33711d11-fea2-450d-945c-5694b605e2a8
+          stepCounter: 2ca4ff96-9373-4969-8bcd-e4cc19e1c124
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        name: MAN_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5d10f692-46b8-4343-bef9-bf275ccf9910
+          stepCounter: 2ca4ff96-9373-4969-8bcd-e4cc19e1c124
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_DELETED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 85313f27-37af-4934-ad97-b8daf36e518a
+          stepCounter: 2ca4ff96-9373-4969-8bcd-e4cc19e1c124
+        config: {}
+        dataType: TIMESTAMP_TZ(9)
+        defaultValue: ""
+        description: ""
+        name: _FIVETRAN_SYNCED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+    join:
+      joinCondition: FROM {{ ref('AURORA_PUBLIC', 'MAN') }}
+  name: MAN
+  schema: ""
+  sqlType: Source
+  table: MAN
+  type: sourceInput
+  version: 1
+type: Node

@@ -1,0 +1,88 @@
+fileVersion: 1
+id: 01704536-fda0-41c3-ae7f-58a4b54f369b
+name: STG_DELIVERY_SINGLE_CUSTOMERNUM_AND_NAME
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 236c0bc2-dfeb-4fec-be13-ada45bf62432
+          stepCounter: 01704536-fda0-41c3-ae7f-58a4b54f369b
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: DELNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9bc0776-fea7-41aa-a6f3-06faa5d86676
+                stepCounter: 1552cc64-0008-466d-876c-f83ce021da7a
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c7956374-4399-431f-99f6-f70bf24d6cbb
+          stepCounter: 01704536-fda0-41c3-ae7f-58a4b54f369b
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: CUSTNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: FIRST_VALUE("DELIVERY_DETAIL"."CUSTNUM") OVER (PARTITION BY "DELIVERY_DETAIL"."CUSTNUM" ORDER BY "DELIVERY_DETAIL"."CUSTNUM" NULLS LAST)
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e8ea3c50-7123-46de-9bf3-62a1bfa40247
+          stepCounter: 01704536-fda0-41c3-ae7f-58a4b54f369b
+        config: {}
+        dataType: VARCHAR(256)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: CUSTOMER_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f0233713-5f29-4933-8355-e03b9d487e1d
+                stepCounter: ae3f5229-66a8-4a38-997b-e2f8c023d110
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          DELIVERY_DETAIL: 1552cc64-0008-466d-876c-f83ce021da7a
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: AURORA_PUBLIC
+            nodeName: DELIVERY_DETAIL
+        join:
+          joinCondition: |-
+            FROM {{ ref('AURORA_PUBLIC', 'DELIVERY_DETAIL') }} "DELIVERY_DETAIL"
+            LEFT JOIN "PC_COALESCE_DB"."AURORA_POSTGRES_PUBLIC"."CUSTOMER" ON "CUSTOMER"."CUSTNUM" = "DELIVERY_DETAIL"."CUSTNUM"
+        name: STG_DELIVERY_SINGLE_CUSTOMERNUM_AND_NAME
+        noLinkRefs: []
+  name: STG_DELIVERY_SINGLE_CUSTOMERNUM_AND_NAME
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

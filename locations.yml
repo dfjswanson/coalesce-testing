@@ -1,0 +1,7 @@
+defaultStorageMapping: WORK
+fileVersion: 1
+locations:
+  - AURORA_PUBLIC
+  - S3_LINEN
+  - SAMPLE
+  - WORK

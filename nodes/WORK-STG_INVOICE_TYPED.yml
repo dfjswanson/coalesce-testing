@@ -1,0 +1,81 @@
+fileVersion: 1
+id: 246854ce-e544-4e9b-a855-8281f7dc4840
+name: STG_INVOICE_TYPED
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fbb28314-c379-46ee-b505-f61a76da6137
+          stepCounter: 246854ce-e544-4e9b-a855-8281f7dc4840
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: INVNUM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4165a0d7-1f4d-4cf8-827f-4137ec3b051b
+                stepCounter: 1e8b60e6-3a3a-4530-9849-8276027462a9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7974dd42-8663-4525-8a61-5a9a617e1e91
+          stepCounter: 246854ce-e544-4e9b-a855-8281f7dc4840
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: INVOICE_CREATED_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ce4db904-6967-4ae2-8dbf-1b0c3dccf559
+                stepCounter: 1e8b60e6-3a3a-4530-9849-8276027462a9
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dfa70f22-912d-403b-9683-cd6036baacbe
+          stepCounter: 246854ce-e544-4e9b-a855-8281f7dc4840
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        description: ""
+        name: INVOICE_CLOSED_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: aafc8640-2a5f-49a1-a49f-1821d8c65d6d
+                stepCounter: 1e8b60e6-3a3a-4530-9849-8276027462a9
+            transform: ""
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: INVOICE
+        join:
+          joinCondition: FROM {{ ref('WORK', 'INVOICE') }} "INVOICE"
+        name: STG_INVOICE_TYPED
+        noLinkRefs: []
+  name: STG_INVOICE_TYPED
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

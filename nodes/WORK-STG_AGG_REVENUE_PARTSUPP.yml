@@ -1,0 +1,105 @@
+fileVersion: 1
+id: 374fe101-4bbf-4d51-9dae-093ce6c28730
+name: STG_AGG_REVENUE_PARTSUPP
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Lineitem data as defined by TPC-H
+  isMultisource: false
+  locationName: WORK
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1d1058fc-9738-46fe-9324-b9860a719a11
+          stepCounter: 374fe101-4bbf-4d51-9dae-093ce6c28730
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: SUM_REVENUE_NO_DISCOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5640fcb1-2639-4b8a-8204-619192b5a5eb
+                stepCounter: a553cf6c-ad1f-4e27-9841-c686ada779ca
+            transform: SUM("STG_REVENUE"."REVENUE_NO_DISCOUNT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a56a1410-f1f7-419d-ab5a-aea0e92c8576
+          stepCounter: 374fe101-4bbf-4d51-9dae-093ce6c28730
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: SUM_REVENUE_FLAT_DISCOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 140a3757-ead2-4cc3-ba79-094312db68e3
+                stepCounter: a553cf6c-ad1f-4e27-9841-c686ada779ca
+            transform: SUM("STG_REVENUE"."REVENUE_FLAT_DISCOUNT")
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6e83719-5003-41fe-a062-d88bb99b652f
+          stepCounter: 374fe101-4bbf-4d51-9dae-093ce6c28730
+        config: {}
+        dataType: NUMBER(12,2)
+        description: ""
+        name: SUM_REVENUE_CALCULATED_DISCOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 67ca0faf-f27d-4e6f-b016-bab425a272a2
+                stepCounter: a553cf6c-ad1f-4e27-9841-c686ada779ca
+            transform: SUM("STG_REVENUE"."CALCULATED_DISCOUNT_PRICE")
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bcd57e2e-3bbe-47bd-83f4-0eebe744f05a
+          stepCounter: 374fe101-4bbf-4d51-9dae-093ce6c28730
+        config: {}
+        dataType: VARCHAR(199)
+        defaultValue: ""
+        description: ""
+        keyColumnType: None
+        name: PARTSUPPKEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 02efe124-704c-44cd-b7ee-16f25d0d94c8
+                stepCounter: a553cf6c-ad1f-4e27-9841-c686ada779ca
+            transform: ""
+        systemColumnType: None
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_REVENUE: a553cf6c-ad1f-4e27-9841-c686ada779ca
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: WORK
+            nodeName: STG_REVENUE
+        join:
+          joinCondition: |-
+            FROM {{ ref('WORK', 'STG_REVENUE') }} "STG_REVENUE"
+            JOIN "PC_COALESCE_DB"."PUBLIC"."STG_PARTSUPP" ON "STG_REVENUE"."PARTSUPPKEY" = "STG_PARTSUPP"."PARTSUPPKEY"
+            GROUP BY "STG_REVENUE"."PARTSUPPKEY"
+        name: STG_AGG_REVENUE_PARTSUPP
+        noLinkRefs: []
+  name: STG_AGG_REVENUE_PARTSUPP
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
